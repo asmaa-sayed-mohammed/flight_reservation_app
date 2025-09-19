@@ -1,5 +1,6 @@
+import 'package:flight_reservation/signup_page.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget
 {
@@ -31,23 +32,29 @@ class HomePage extends StatelessWidget
                         child: Text("Book  your  ticket  now!", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold, fontFamily: "Times New Roman"),)
                     ),
                     Positioned(
-                        width: 500,
+                        width: 550,
                         height: 900,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                              ElevatedButton(onPressed: (){},
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.orangeAccent
-                                  ),
-                                  child: Text("Sign up",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
-                              ElevatedButton(onPressed: (){},
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.orangeAccent
-                                  ),
-                                  child: Text("Login",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
-                          ],
-                      ),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                                ElevatedButton(onPressed: ()
+                                    {
+                                        Get.to(SignupPage());
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.orangeAccent
+                                    ),
+                                    child: Text("Sign up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
+                                ElevatedButton(onPressed: ()
+                                    {
+
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.orangeAccent
+                                    ),
+                                    child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
+                            ],
+                        ),
                     )
                 ],
             ),

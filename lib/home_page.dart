@@ -1,3 +1,4 @@
+import 'package:flight_reservation/login_page.dart';
 import 'package:flight_reservation/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,7 +48,7 @@ class HomePage extends StatelessWidget
                                     child: Text("Sign up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
                                 ElevatedButton(onPressed: ()
                                     {
-
+                                        Get.to(LoginPage());
                                     },
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.orangeAccent

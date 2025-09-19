@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignupPage extends StatelessWidget
+class LoginPage extends StatelessWidget
 {
-    SignupPage({super.key});
+    LoginPage({super.key});
 
-    //name,phone,email,password
-    final nameController = TextEditingController();
-    final phoneController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
@@ -19,13 +16,18 @@ class SignupPage extends StatelessWidget
         return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.white,),
                 backgroundColor: Colors.black,
-                iconTheme: IconThemeData(color: Colors.white),
-                title: Text("Create your new account", style: TextStyle(
-                        color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),),
+                title: Text(
+                    "Login to your account",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                    ),
+                ),
                 centerTitle: true,
             ),
-
             body: Center(
                 child: Card(
                     elevation: 24,
@@ -36,13 +38,11 @@ class SignupPage extends StatelessWidget
                     child: Padding(
                         padding: const EdgeInsets.all(24.0),
                         child: Form(
-                            child: SizedBox(width: Get.width * 0.7, height: 400,
+                            child: SizedBox(width: Get.width * 0.7, height: 250,
                                 child: Column(
                                     spacing: 8,
                                     children: [
-                                        buildTextField(nameController, "Enter your name..."),
                                         buildTextField(emailController, "Enter your email..."),
-                                        buildTextField(phoneController, "Enter your phone..."),
                                         buildPassTextField(),
                                         Padding(
                                             padding: const EdgeInsets.all(24.0),
@@ -65,7 +65,6 @@ class SignupPage extends StatelessWidget
                     ),
                 ),
             )
-
         );
     }
 

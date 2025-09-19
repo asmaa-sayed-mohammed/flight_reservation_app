@@ -29,34 +29,42 @@ class HomePage extends StatelessWidget
                             ),
                         ),
                     ),
-                    Center(
-                        child: Text("Book  your  ticket  now!", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold, fontFamily: "Times New Roman"),)
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 8,
+                        children: [
+                            Center(
+                                child: Text("Book your ticket now!", style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold, fontFamily: "Times New Roman"),)
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(32.0),
+                              child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  spacing: 64,
+                                  children: [
+                                      ElevatedButton(onPressed: ()
+                                          {
+                                              Get.to(SignupPage());
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.orangeAccent
+                                          ),
+                                          child: Text("Sign up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
+                                      ElevatedButton(onPressed: ()
+                                          {
+                                              Get.to(LoginPage());
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.orangeAccent
+                                          ),
+                                          child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
+                                  ],
+                              ),
+                            )
+                        ],
                     ),
-                    Positioned(
-                        width: 550,
-                        height: 900,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                                ElevatedButton(onPressed: ()
-                                    {
-                                        Get.to(SignupPage());
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.orangeAccent
-                                    ),
-                                    child: Text("Sign up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
-                                ElevatedButton(onPressed: ()
-                                    {
-                                        Get.to(LoginPage());
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.orangeAccent
-                                    ),
-                                    child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),)),
-                            ],
-                        ),
-                    )
+
                 ],
             ),
         );

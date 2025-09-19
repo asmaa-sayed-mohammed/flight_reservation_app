@@ -9,6 +9,7 @@ class LoginPage extends StatelessWidget
     final passwordController = TextEditingController();
 
     final obscured = true.obs;
+    final isCompleted = false.obs;
 
     @override
     Widget build(BuildContext context) 
@@ -22,7 +23,7 @@ class LoginPage extends StatelessWidget
                     "Login to your account",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 22,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                     ),
                 ),
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget
                     child: Padding(
                         padding: const EdgeInsets.all(24.0),
                         child: Form(
-                            child: SizedBox(width: Get.width * 0.7, height: 250,
+                            child: SizedBox(width: Get.width * 0.7, height: 270,
                                 child: Column(
                                     spacing: 8,
                                     children: [
@@ -46,18 +47,32 @@ class LoginPage extends StatelessWidget
                                         buildPassTextField(),
                                         Padding(
                                             padding: const EdgeInsets.all(24.0),
-                                            child: ElevatedButton(onPressed: ()
+                                            child: Obx(()
                                                 {
-                                                    //insert in database
-                                                    //Get.to(login)
-                                                },
-                                                style: ElevatedButton.styleFrom(
-                                                    backgroundColor: Colors.orangeAccent
-                                                ),
-                                                child: Text("Submit", style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 18),)),
+                                                    return ElevatedButton(onPressed: ()
+                                                        {
+                                                            if (isCompleted.value) 
+                                                            {
+                                                                //insert in database
+                                                                //Get.to(login)
+                                                            }
+                                                            else 
+                                                            {
+                                                                Get.snackbar("empty information", "Please, fill information", backgroundColor: Colors.red, colorText: Colors.white, isDismissible: true);
+                                                            }
+
+                                                        },
+                                                        style: ElevatedButton.styleFrom(
+                                                            backgroundColor: isCompleted.value ? Colors
+                                                                    .orangeAccent : Colors.grey
+                                                        ),
+                                                        child: Text("Submit", style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontWeight: FontWeight.bold,
+                                                                fontSize: 18),)
+                                                    );
+                                                }
+                                            ),
                                         )
                                     ],
                                 ),
@@ -74,6 +89,10 @@ class LoginPage extends StatelessWidget
             padding: const EdgeInsets.all(8.0),
             child: TextField(
                 controller: controller,
+                onChanged: (a)
+                {
+                    completed();
+                },
                 decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -98,6 +117,10 @@ class LoginPage extends StatelessWidget
                 {
                     return TextField(
                         controller: passwordController,
+                        onChanged: (a)
+                        {
+                            completed();
+                        },
                         decoration: InputDecoration(
                             fillColor: Colors.white,
                             filled: true,
@@ -113,12 +136,19 @@ class LoginPage extends StatelessWidget
                                 {
                                     obscured.toggle();
                                 },
-                                icon: Icon(obscured.value ? Icons.visibility_off : Icons.visibility, color: Colors.orange,))
+                                icon: Icon(
+                                    obscured.value ? Icons.visibility_off : Icons.visibility,
+                                    color: Colors.orange,))
                         ),
                         obscureText: obscured.value,
                     );
                 }
             )
         );
+    }
+
+    void completed() 
+    {
+        isCompleted.value = passwordController.text.isNotEmpty && emailController.text.isNotEmpty;
     }
 }
